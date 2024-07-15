@@ -12,30 +12,14 @@ module.exports = {
 				danger: "#a4161a"
 			},
 			fontFamily: {
-				thin: {
-					DEFAULT: ["JetbrainsJetBrainsMono-Thin", "sans-serif"],
-					italic: ["JetBrainsMono-ThinItalic", "sans-serif"],
-				},
-				light: {
-					DEFAULT: ["JetbrainsJetBrainsMono-Light", "sans-serif"],
-					italic: ["JetBrainsMono-LightItalic", "sans-serif"],
-				},
-				regular: {
-					DEFAULT: ["JetbrainsJetBrainsMono-Regular", "sans-serif"],
-					italic: ["JetBrainsMono-RegularItalic", "sans-serif"],
-				},
-				medium: {
-					DEFAULT: ["JetbrainsJetBrainsMono-Medium", "sans-serif"],
-					italic: ["JetBrainsMono-MediumItalic", "sans-serif"],
-				},
-				semibold: {
-					DEFAULT: ["JetbrainsJetBrainsMono-SemiBold", "sans-serif"],
-					italic: ["JetBrainsMono-SemiBoldItalic", "sans-serif"],
-				},
-				bold: {
-					DEFAULT: ["JetbrainsJetBrainsMono-Bold", "sans-serif"],
-					italic: ["JetBrainsMono-BoldItalic", "sans-serif"],
-				},
+				light:  ["JetBrainsMono-Light", "sans-serif"],
+				xlight:  ["JetBrainsMono-ExtraLight", "sans-serif"],
+				thin:  ["JetBrainsMono-Thin", "sans-serif"],
+				regular: ["JetBrainsMono-Regular", "sans-serif"],
+				medium:  ["JetBrainsMono-Medium", "sans-serif"],
+				semibold:  ["JetBrainsMono-SemiBold", "sans-serif"],
+				bold:  ["JetBrainsMono-Bold", "sans-serif"],
+				xbold:  ["JetBrainsMono-ExtraBold", "sans-serif"],
 			},
 		},
 	},
