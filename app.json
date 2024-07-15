@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "react-native-sandbox",
-    "slug": "react-native-sandbox",
+    "name": "Notes of Arkad",
+    "slug": "notes-of-arkad",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "adaptive",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "aora",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
