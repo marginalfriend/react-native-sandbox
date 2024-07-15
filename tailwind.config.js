@@ -18,7 +18,7 @@ module.exports = {
 				regular: ["JetBrainsMono-Regular", "sans-serif"],
 				medium:  ["JetBrainsMono-Medium", "sans-serif"],
 				semibold:  ["JetBrainsMono-SemiBold", "sans-serif"],
-				bold:  ["JetBrainsMono-Bold", "sans-serif"],
+				jbold:  ["JetBrainsMono-Bold", "sans-serif"],
 				xbold:  ["JetBrainsMono-ExtraBold", "sans-serif"],
 			},
 		},
