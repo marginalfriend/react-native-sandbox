@@ -1,18 +1,59 @@
 import { SafeAreaView, View, Text, ScrollView, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Images from "@/constants/Images";
+import FormField from "@/components/FormField";
+import ThemedButton from "@/components/ThemedButton";
+import { Link } from "expo-router";
 
 const SignIn = () => {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = () => {};
+
   return (
     <SafeAreaView className="h-full">
       <ScrollView>
-        <View className="w-full justify-center h-full px-4 my-6">
+        <View className="w-full justify-center h-full min-h-[85vh] px-4 my-6">
           <Image
             source={Images.logo}
-            className="w-[200px] h-[50px]"
+            className="w-[200px] h-[100px] mx-auto"
             resizeMode="contain"
           />
-					<Text className="text-2xl font-xbold">Log in to Arkad</Text>
+          <Text className="text-center text-2xl font-xbold">Log in to Arkad</Text>
+          <FormField
+            placeHolder="Email"
+            title="Email"
+            value={form.email}
+            handleChange={(e: any) => {
+              setForm({ ...form, email: e });
+            }}
+            formStyles="mt-7"
+            keyboardType="email-address"
+          />
+          <FormField
+            placeHolder="Password"
+            title="Password"
+            value={form.password}
+            handleChange={(e: any) => {
+              setForm({ ...form, password: e });
+            }}
+            formStyles="mt-7"
+            keyboardType="default"
+          />
+
+          <ThemedButton text="Sign In" handlePress={handleSubmit} />
+
+          <View className="justify-center pt-5 flex flex-row gap-2">
+            <Text className="font-regular">Don't have an account?</Text>
+            <Link href="/sign-up" className="font-jbold text-highlight">
+              Sign Up
+            </Link>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

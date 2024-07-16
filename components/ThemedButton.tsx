@@ -24,12 +24,16 @@ const ThemedButton = ({
   return (
     <TouchableOpacity
       onPress={handlePress}
-      className={`bg-highlight px-4 py-2 mt-10 ${
+      className={`bg-highlight px-6 py-4 mt-10 ${
         isLoading ? "opacity-50" : ""
       } ${buttonStyle}`}
       activeOpacity={0.6}
     >
-      <Text className={`font-semibold text-white text-center ${textStyle}`}>{text}</Text>
+      <Text
+        className={`font-regular text-white text-[16px] text-center ${textStyle}`}
+      >
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };
