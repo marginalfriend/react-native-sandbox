@@ -11,8 +11,12 @@ export default function App() {
   return (
     <SafeAreaView className="flex flex-col items-center justify-center bg-white">
       <ScrollView contentContainerStyle={{ height: "100%" }}>
-        <View className="w-full justify-center items-center h-full px-4">
-          <Text className="font-xbold text-3xl">Notes of Arkad</Text>
+        <View className="w-full justify-center items-center min-h-[85vh] h-full px-4">
+          <Image
+            source={Images.logoText}
+            className="w-[200px] h-[70px]"
+            resizeMode="contain"
+          />
           <Image
             source={Images.onboarding}
             className="w-[360px] h-[300px]"
