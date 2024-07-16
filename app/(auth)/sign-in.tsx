@@ -1,9 +1,17 @@
-import { SafeAreaView, View, Text, ScrollView, Image } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Alert,
+} from "react-native";
 import React, { useState } from "react";
 import Images from "@/constants/Images";
 import FormField from "@/components/FormField";
 import ThemedButton from "@/components/ThemedButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { signIn } from "@/lib/appwrite";
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -13,7 +21,25 @@ const SignIn = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    if (!form.email || !form.password)
+      Alert.alert("Error", "Please fill in all the fields");
+
+    setIsSubmitting(true);
+
+    try {
+      const result = await signIn(form.email, form.password);
+      // Set to global state
+
+      router.replace("/home");
+    } catch (e: any) {
+      Alert.alert("Error", e.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <SafeAreaView className="h-full">
@@ -24,7 +50,9 @@ const SignIn = () => {
             className="w-[200px] h-[100px] mx-auto"
             resizeMode="contain"
           />
-          <Text className="text-center text-2xl font-xbold">Log in to Arkad</Text>
+          <Text className="text-center text-2xl font-xbold">
+            Log in to Arkad
+          </Text>
           <FormField
             placeHolder="Email"
             title="Email"

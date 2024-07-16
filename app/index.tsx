@@ -22,11 +22,17 @@ export default function App() {
             className="w-[360px] h-[300px]"
             resizeMode="contain"
           />
-          <Text className="font-regular px-12">
-            "Do not save what is left after spending, but spend what is left
-            after saving."
+          <Text className="text-2xl font-jbold text-left mr-auto pl-6 my-0 py-0 h-min">
+            "
           </Text>
-          <Text className="font-thin px-10 text-left mt-1">Warren Buffett</Text>
+          <Text className="font-regular px-12">
+            Do not save what is left after spending, but spend what is left
+            after saving.
+          </Text>
+          <Text className="text-2xl font-jbold text-left ml-auto pr-6 my-0 py-0 h-min">
+            "
+          </Text>
+          <Text className="font-regular text-foreground px-10 text-left">Warren Buffett</Text>
           <ThemedButton
             text="Get Started"
             handlePress={() => router.push("/sign-in")}

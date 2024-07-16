@@ -1,23 +1,49 @@
-import { SafeAreaView, View, Text, ScrollView, Image } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Alert,
+} from "react-native";
 import React, { useState } from "react";
 import Images from "@/constants/Images";
 import FormField from "@/components/FormField";
 import ThemedButton from "@/components/ThemedButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { createUser } from "@/lib/appwrite";
 
 const SignUp = () => {
   const [form, setForm] = useState({
-		username: "",
+    username: "",
     email: "",
     password: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    if (!form.username || !form.email || !form.password)
+      Alert.alert("Error", "Please fill in all the fields");
+
+    setIsSubmitting(true);
+
+    try {
+      const result = await createUser(form.username, form.email, form.password);
+      // Set to global state
+
+      router.replace("/home");
+    } catch (e: any) {
+      Alert.alert("Error", e.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <SafeAreaView className="h-full">
+    <SafeAreaView className="pt-8 h-full">
       <ScrollView>
         <View className="w-full justify-center h-full min-h-[85vh] px-4 my-6">
           <Image
@@ -59,7 +85,7 @@ const SignUp = () => {
             keyboardType="default"
           />
 
-          <ThemedButton text="Sign In" handlePress={handleSubmit} />
+          <ThemedButton text="Sign Up" handlePress={handleSubmit} />
 
           <View className="justify-center pt-5 flex flex-row gap-2">
             <Text className="font-regular">Already have an account?</Text>

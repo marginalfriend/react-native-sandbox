@@ -11,7 +11,7 @@ export type ButtonProps = {
   buttonStyle?: string;
   textStyle?: string;
   text: string;
-  handlePress: VoidFunction;
+  handlePress: (e:any) => void;
 };
 
 const ThemedButton = ({
