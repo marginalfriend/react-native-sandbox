@@ -5,6 +5,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Images from "@/constants/Images";
 import ThemedButton from "@/components/ThemedButton";
 
+import { Redirect, router } from "expo-router";
+
 export default function App() {
   return (
     <SafeAreaView className="flex flex-col items-center justify-center bg-white">
@@ -21,7 +23,10 @@ export default function App() {
             after saving."
           </Text>
           <Text className="font-thin px-10 text-left mt-1">Warren Buffett</Text>
-					<ThemedButton text="Get Started" />
+          <ThemedButton
+            text="Get Started"
+            handlePress={() => router.push("/sign-in")}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
