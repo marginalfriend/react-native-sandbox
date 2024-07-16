@@ -11,7 +11,8 @@ import Images from "@/constants/Images";
 import FormField from "@/components/FormField";
 import ThemedButton from "@/components/ThemedButton";
 import { Link, router } from "expo-router";
-import { signIn } from "@/lib/appwrite";
+import { getCurrentUser, signIn } from "@/lib/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -21,23 +22,31 @@ const SignIn = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+  const { setUser, setIsLoggedIn } = useGlobalContext();
 
+  const handleSubmit = async () => {
     if (!form.email || !form.password)
       Alert.alert("Error", "Please fill in all the fields");
 
     setIsSubmitting(true);
 
     try {
-      const result = await signIn(form.email, form.password);
-      // Set to global state
 
+
+      await signIn(form.email, form.password);
+      const result = await getCurrentUser();
+      setUser(result)
+			setIsLoggedIn(true)
       router.replace("/home");
+
     } catch (e: any) {
+
       Alert.alert("Error", e.message);
+
     } finally {
+
       setIsSubmitting(false);
+
     }
   };
 

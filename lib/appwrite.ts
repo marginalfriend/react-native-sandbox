@@ -44,7 +44,7 @@ export const createUser = async (username: string, email: string, password: stri
 			}
 		)
 
-		console.log(newUser)
+		return newUser
 
 	} catch (e: any) {
 		throw new Error(e)
