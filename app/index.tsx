@@ -1,13 +1,16 @@
-import { Link } from "expo-router";
-import { Image, ScrollView, StatusBar, Text, View } from "react-native";
-import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Images from "@/constants/Images";
 import ThemedButton from "@/components/ThemedButton";
+import Images from "@/constants/Images";
+import React from "react";
+import { Image, ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Redirect, router } from "expo-router";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 export default function App() {
+  const { isLoading, isLoggedIn } = useGlobalContext();
+
+	if (!isLoading && isLoggedIn) return <Redirect href="/home"/>
   return (
     <SafeAreaView className="flex flex-col items-center justify-center bg-white">
       <ScrollView contentContainerStyle={{ height: "100%" }}>
@@ -32,7 +35,9 @@ export default function App() {
           <Text className="text-2xl font-jbold text-left ml-auto pr-6 my-0 py-0 h-min">
             "
           </Text>
-          <Text className="font-regular text-foreground px-10 text-left">Warren Buffett</Text>
+          <Text className="font-regular text-foreground px-10 text-left">
+            Warren Buffett
+          </Text>
           <ThemedButton
             text="Get Started"
             handlePress={() => router.push("/sign-in")}
