@@ -1,6 +1,6 @@
-import { View, Text, Image, ImageSourcePropType } from "react-native";
+import { Tabs } from "expo-router";
 import React from "react";
-import { Tabs, Redirect } from "expo-router";
+import { Image, ImageSourcePropType, Text, View } from "react-native";
 
 import icons from "../../constants/Icons";
 
@@ -20,7 +20,7 @@ const TabIcon = ({ icon, color, name, focused }: TabIconProps) => {
         tintColor={color}
         className="w-6 h-6"
       />
-      <Text className={`${focused ? "font-jbold" : "font-regular"} text-xs`}>
+      <Text className={`${focused ? "font-jbold" : "font-regular"} text-xs`} style={{color: color}}>
         {name}
       </Text>
     </View>
@@ -33,6 +33,12 @@ const TabsLayout = () => {
       <Tabs
         screenOptions={{
           tabBarShowLabel: false,
+          tabBarActiveTintColor: "#3a86ff",
+          tabBarInactiveTintColor: "#6C757D",
+          tabBarStyle: {
+            backgroundColor: "#E9ECEF",
+            borderTopWidth: 0,
+          },
         }}
       >
         <Tabs.Screen
@@ -66,21 +72,6 @@ const TabsLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="profile"
-          options={{
-            title: "Profile",
-            headerShown: false,
-            tabBarIcon: ({ color, focused }) => (
-              <TabIcon
-                color={color}
-                name="Profile"
-                focused={focused}
-                icon={icons.profile}
-              />
-            ),
-          }}
-        />
-        <Tabs.Screen
           name="table"
           options={{
             title: "Table",
@@ -91,6 +82,21 @@ const TabsLayout = () => {
                 name="Table"
                 focused={focused}
                 icon={icons.table}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            title: "Profile",
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                color={color}
+                name="Profile"
+                focused={focused}
+                icon={icons.profile}
               />
             ),
           }}
