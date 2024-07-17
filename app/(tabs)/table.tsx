@@ -1,12 +1,16 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from "react";
+import { View,SafeAreaView, ScrollView, Text } from "react-native";
 
 const Table = () => {
-	return (
-		<View>
-			<Text>Table</Text>
-		</View>
-	)
-}
+  return (
+    <SafeAreaView className="h-full">
+      <ScrollView>
+        <View className="w-full justify-center h-full min-h-[85vh] px-4 my-6">
+          <Text>Table</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
-export default Table
+export default Table;

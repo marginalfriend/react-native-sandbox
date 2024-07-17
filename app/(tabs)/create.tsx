@@ -1,4 +1,6 @@
 import FormField from "@/components/FormField";
+import ThemedButton from "@/components/ThemedButton";
+import { useGlobalContext } from "@/context/GlobalProvider";
 import React, { useState } from "react";
 import { SafeAreaView, ScrollView, View, Text } from "react-native";
 
@@ -7,6 +9,8 @@ const Create = () => {
     subject: "",
     value: 0,
   });
+
+  const { list, setList } = useGlobalContext();
 
   // Value Handlers
   const [formattedValue, setFormattedValue] = useState("");
@@ -28,9 +32,19 @@ const Create = () => {
     return parseInt(value).toLocaleString();
   };
 
-  // Subject Handlers
+  // Subject Handler
   const handleSubjectValue = (e: string) => {
     setForm({ ...form, subject: e });
+  };
+
+	// Submit handler
+  const handleSubmit = () => {
+    setList([...list, form]);
+    setForm({
+      subject: "",
+      value: 0,
+    });
+		setFormattedValue("")
   };
 
   return (
@@ -56,6 +70,7 @@ const Create = () => {
             formStyles="mt-7"
             keyboardType="numeric"
           />
+          <ThemedButton text={"Create"} handlePress={handleSubmit} />
         </View>
       </ScrollView>
     </SafeAreaView>

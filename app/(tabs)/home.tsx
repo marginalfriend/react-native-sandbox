@@ -33,11 +33,11 @@ const Home = () => {
   // }, []);
   return (
     <SafeAreaView>
-      <FlatList
+      {/* <FlatList
         data={data}
         keyExtractor={(coin) => coin.id}
         renderItem={({ coin }: { coin: Coin }) => <Text>{coin.id}</Text>}
-      />
+      /> */}
     </SafeAreaView>
   );
 };
