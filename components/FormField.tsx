@@ -23,6 +23,7 @@ const FormField = ({
   formStyles,
   placeHolder,
   handleChange,
+	keyboardType,
 }: FormFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -37,6 +38,7 @@ const FormField = ({
           placeholderTextColor="#6C757D"
           onChangeText={handleChange}
           secureTextEntry={title === "Password" && !showPassword}
+					keyboardType={keyboardType}
         />
 
         {title === "Password" && (

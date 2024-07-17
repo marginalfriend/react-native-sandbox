@@ -10,11 +10,15 @@ import React, { useState } from "react";
 import Images from "@/constants/Images";
 import FormField from "@/components/FormField";
 import ThemedButton from "@/components/ThemedButton";
-import { Link, router } from "expo-router";
+import { Link, Redirect, router } from "expo-router";
 import { getCurrentUser, signIn } from "@/lib/appwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
 
 const SignIn = () => {
+	  const { isLoading, isLoggedIn } = useGlobalContext();
+
+    if (!isLoading && isLoggedIn) return <Redirect href="/home" />;
+		
   const [form, setForm] = useState({
     email: "",
     password: "",
