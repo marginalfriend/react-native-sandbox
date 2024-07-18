@@ -1,14 +1,13 @@
+import LoadingCard from "@/components/LoadingCard";
 import ThemedButton from "@/components/ThemedButton";
 import { COINGECKO_URL } from "@/constants/URL";
 import { formatToUSD } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 import {
-  ActivityIndicator,
-  FlatList,
-  Image,
-  ScrollView,
-  Text,
-  View,
+	FlatList,
+	Image,
+	Text,
+	View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -151,12 +150,7 @@ const Home = () => {
   const getContent = () => {
     if (isLoading) {
       return (
-        <View className="border-[0.9px] flex-shrink w-36 py-8 bg-background">
-          <ActivityIndicator color="#6C757D" size="large" />
-          <Text className="text-center font-regular pt-2 text-xs text-foreground">
-            Loading data...
-          </Text>
-        </View>
+        <LoadingCard text="Loading data..." />
       );
     }
 
@@ -191,7 +185,6 @@ const Home = () => {
 
   return (
     <SafeAreaView className="h-full flex-1">
-      <ScrollView>
         <View className="w-full justify-center items-center h-full min-h-[85vh] my-2 px-2 flex-1">
           {getContent()}
         </View>
@@ -211,7 +204,6 @@ const Home = () => {
             />
           </View>
         )}
-      </ScrollView>
     </SafeAreaView>
   );
 };
