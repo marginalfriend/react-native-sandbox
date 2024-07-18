@@ -12,11 +12,6 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type TGTLResponse = {
-  top_gainers: Coin[];
-  top_losers: Coin[];
-};
-
 type Coin = {
   id: string;
   symbol: string;
@@ -48,7 +43,6 @@ type Coin = {
 };
 
 const CoinView = ({
-  id,
   symbol,
   name,
   image,
@@ -73,16 +67,18 @@ const CoinView = ({
       <Text className="font-jsemibold text-[10px] text-center">{name}</Text>
     </View>
     <View className="flex flex-grow pl-10">
-      <Text className="font-regular text-xs text-foreground">Total Vol.</Text>
-      <Text className="font-jsemibold text-[16px]">
-        {formatToUSD(total_volume)}
+      <Text className="font-regular text-xs text-foreground">
+        Current Price
       </Text>
-      <Text className="pt-5 font-regular text-xs text-foreground">
+      <Text className="font-jsemibold">{formatToUSD(current_price)}</Text>
+      <Text className="pt-2 font-regular text-xs text-foreground">
+        Total Vol.
+      </Text>
+      <Text className="font-jsemibold">{formatToUSD(total_volume)}</Text>
+      <Text className="pt-2 font-regular text-xs text-foreground">
         Market Cap
       </Text>
-      <Text className="font-jsemibold text-[16px]">
-        {formatToUSD(market_cap)}
-      </Text>
+      <Text className="font-jsemibold">{formatToUSD(market_cap)}</Text>
     </View>
   </View>
 );
@@ -94,11 +90,13 @@ const Home = () => {
   const [page, setPage] = useState(1);
 
   const handleNext = () => {
+		setIsLoading(true)
     setPage(page + 1);
   };
 
   const handlePrevious = () => {
-    setPage(page - 1)
+		setIsLoading(true)
+    setPage(page - 1);
   };
 
   function fetchData() {
@@ -145,12 +143,19 @@ const Home = () => {
   }
 
   useEffect(() => {
-		fetchData()
-	}, [page]);
+    fetchData();
+  }, [page]);
 
   const getContent = () => {
     if (isLoading) {
-      return <ActivityIndicator size="large" />;
+      return (
+        <View className="border-[0.9px] flex-shrink w-36 py-8 bg-background">
+          <ActivityIndicator color="#6C757D" size="large" />
+          <Text className="text-center font-regular pt-2 text-xs text-foreground">
+            Loading data...
+          </Text>
+        </View>
+      );
     }
 
     if (error) {
@@ -163,6 +168,7 @@ const Home = () => {
 
     return (
       <FlatList
+        className="w-full"
         data={data}
         keyExtractor={(coin: Coin) => coin.id}
         renderItem={({ item }) => (
@@ -187,7 +193,7 @@ const Home = () => {
         Top Market Cap
       </Text>
       <ScrollView>
-        <View className="w-full justify-center h-full min-h-[85vh] px-4 my-2 flex-1">
+        <View className="w-full justify-center items-center h-full min-h-[85vh] my-2 px-2 flex-1">
           {getContent()}
         </View>
         <View className="flex-1 flex-row justify-end align-middle">

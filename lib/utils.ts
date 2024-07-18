@@ -15,7 +15,7 @@ export function formatToUSD(number: number): string {
 		style: 'currency',
 		currency: 'USD',
 		compactDisplay: 'short',
-		maximumFractionDigits: 0,
+		maximumFractionDigits: 10,
 		minimumFractionDigits: 0,
 	});
 }
