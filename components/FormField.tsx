@@ -30,9 +30,9 @@ const FormField = ({
   return (
     <View className={`space-y-2 ${formStyles}`}>
       <Text className="text-base text-foreground font-jmedium">{title}</Text>
-      <View className="flex flex-row w-full h-16 px-4 bg-midground border border-foreground focus:border-[2px] focus:border-highlight items-center">
+      <View className="flex flex-row w-full h-16 px-4 bg-midground border-[0.9px] border-foreground focus:border focus:border-highlight items-center">
         <TextInput
-          className="w-full flex-1 text-black font-regular text-base"
+          className="w-full flex-1 text-black font-light text-base"
           value={value}
           placeholder={placeHolder}
           placeholderTextColor="#6C757D"

@@ -3,6 +3,7 @@ import React from "react";
 import { Image, ImageSourcePropType, Text, View } from "react-native";
 
 import icons from "../../constants/Icons";
+import { StatusBar } from "expo-status-bar";
 
 export type TabIconProps = {
   icon: ImageSourcePropType;
@@ -37,7 +38,9 @@ const TabsLayout = () => {
           tabBarInactiveTintColor: "#6C757D",
           tabBarStyle: {
             backgroundColor: "#E9ECEF",
-            borderTopWidth: 0,
+            borderTopWidth: 0.9,
+						borderColor: "#212529",
+						paddingHorizontal: 5,
           },
         }}
       >
@@ -102,6 +105,7 @@ const TabsLayout = () => {
           }}
         />
       </Tabs>
+      <StatusBar style="dark" />
     </>
   );
 };

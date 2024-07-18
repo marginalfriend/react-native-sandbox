@@ -56,7 +56,7 @@ const CoinView = ({
       <Text className="font-jsemibold text-center">#{market_cap_rank}</Text>
       <Image
         resizeMode="contain"
-        className="h-16 w-16 rounded-full"
+        className="h-16 w-16 rounded-full my-1"
         source={{
           uri: image,
         }}
@@ -70,7 +70,9 @@ const CoinView = ({
       <Text className="font-regular text-xs text-foreground">
         Current Price
       </Text>
-      <Text className="font-jsemibold">{formatToUSD(current_price)}</Text>
+      <Text className="font-jsemibold text-green-600">
+        {formatToUSD(current_price)}
+      </Text>
       <Text className="pt-2 font-regular text-xs text-foreground">
         Total Vol.
       </Text>
@@ -90,12 +92,12 @@ const Home = () => {
   const [page, setPage] = useState(1);
 
   const handleNext = () => {
-		setIsLoading(true)
+    setIsLoading(true);
     setPage(page + 1);
   };
 
   const handlePrevious = () => {
-		setIsLoading(true)
+    setIsLoading(true);
     setPage(page - 1);
   };
 
@@ -143,7 +145,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, [page]);
 
   const getContent = () => {
@@ -189,27 +191,26 @@ const Home = () => {
 
   return (
     <SafeAreaView className="h-full flex-1">
-      <Text className="p-5 font-jbold text-xl bg-background border-b-[0.95px] text-center">
-        Top Market Cap
-      </Text>
       <ScrollView>
         <View className="w-full justify-center items-center h-full min-h-[85vh] my-2 px-2 flex-1">
           {getContent()}
         </View>
-        <View className="flex-1 flex-row justify-end align-middle">
-          {page != 1 && (
+        {!isLoading && (
+          <View className="flex flex-row justify-center align-middle">
+            {page != 1 && (
+              <ThemedButton
+                buttonStyle="m-1 w-[50%]"
+                text={"< Previous"}
+                handlePress={handlePrevious}
+              />
+            )}
             <ThemedButton
-              buttonStyle="w-[50%] m-1"
-              text={"< Previous"}
-              handlePress={handlePrevious}
+              buttonStyle="m-1 w-[50%]"
+              text={"Next >"}
+              handlePress={handleNext}
             />
-          )}
-          <ThemedButton
-            buttonStyle="w-[50%] m-1"
-            text={"Next >"}
-            handlePress={handleNext}
-          />
-        </View>
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

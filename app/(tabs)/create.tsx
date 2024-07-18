@@ -57,7 +57,7 @@ const Create = () => {
       <ScrollView>
         <View className="w-full justify-center h-full min-h-[85vh] px-4 my-6">
           <Text className="text-center text-2xl font-xbold">
-            + Create New Entry
+            Create New Entry
           </Text>
           <FormField
             placeHolder="Rent"
