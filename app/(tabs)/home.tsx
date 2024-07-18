@@ -95,12 +95,10 @@ const Home = () => {
 
   const handleNext = () => {
     setPage(page + 1);
-		fetchData()
   };
 
   const handlePrevious = () => {
-    setPage(page - 1);
-		fetchData()
+    setPage(page - 1)
   };
 
   function fetchData() {
@@ -148,7 +146,7 @@ const Home = () => {
 
   useEffect(() => {
 		fetchData()
-	}, []);
+	}, [page]);
 
   const getContent = () => {
     if (isLoading) {
