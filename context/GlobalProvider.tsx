@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { getCurrentUser } from "@/lib/appwrite";
 import { Models } from "react-native-appwrite";
+import { Entry } from "@/app/(tabs)/create";
 
 interface GlobalContextType {
   isLoggedIn: boolean;
@@ -9,8 +10,8 @@ interface GlobalContextType {
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   user: Models.Document | undefined;
   setUser: React.Dispatch<React.SetStateAction<Models.Document | undefined>>;
-  list: object[];
-  setList: React.Dispatch<React.SetStateAction<object[]>>;
+  list: Entry[];
+  setList: React.Dispatch<React.SetStateAction<Entry[]>>;
 }
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
@@ -29,7 +30,7 @@ const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [user, setUser] = useState<Models.Document | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [list, setList] = useState([{}]);
+  const [list, setList] = useState<Entry[]>([]);
 
   useEffect(() => {
     getCurrentUser()

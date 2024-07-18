@@ -4,6 +4,11 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 import React, { useState } from "react";
 import { SafeAreaView, ScrollView, View, Text } from "react-native";
 
+export type Entry = {
+	subject: string;
+	value: number;
+}
+
 const Create = () => {
   const [form, setForm] = useState({
     subject: "",
